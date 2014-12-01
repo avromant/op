@@ -1,0 +1,13 @@
+<table class="table movietable">
+  <tr>
+    <td><h3>Details for {{content.id}}</h3></td>
+    
+  </tr>
+  <tr ng-repeat="(key, val) in content.content">
+ 		<td><label>{{key}}</label></td>
+ 		<td>{{content.content[key]}}</td>
+  </tr>
+</table>
+<div>
+  <a class="btn btn-primary" ui-sref="editContent({id:content.id})">Edit</a>
+</div>

@@ -1,0 +1,12 @@
+<form class="form-horizontal" role="form" ng-submit="addContent()">
+
+	<div class="form-group">
+		<label for="plot" class="col-sm-2 control-label">Id.</label>
+		<div class="col-sm-10">
+			<input type="text" ng-model="content.id" class="form-control" id="plot" placeholder="id" />
+		</div>
+	</div>
+	<div ng-include="'partials/_form.html'"></div>
+</form>
+
+<!-- <button ng-click="addNewField()" class="btn btn-primary">Add field</button> -->
