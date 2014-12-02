@@ -5,7 +5,6 @@ import org.onepoint.pim.repository.GenericContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/api/contents")
-public class InventoryItemController {
+public class ContentController {
 
 	@Autowired
 	GenericContentRepository repository;
@@ -39,7 +38,6 @@ public class InventoryItemController {
 			@RequestBody GenericContent content) throws JsonProcessingException {
 
 		return repository.save(content);
-
 	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")

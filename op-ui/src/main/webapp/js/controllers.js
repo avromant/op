@@ -3,7 +3,8 @@ angular.module('dynamicFormApp.controllers', []).controller('ContentListControll
   
   $scope.deleteContent = function(content) { // Issues a DELETE to /api/content/:id
 	  content.$delete({ id: content.id }, function() {
-	        $window.location.href = ''; //redirect to home
+		  $scope.contents = Content.query();
+		  //$state.go('contents'); //redirect to home
 	  });
   };
 }).controller('ContentViewController', function($scope, $stateParams, Content) {
@@ -12,10 +13,9 @@ angular.module('dynamicFormApp.controllers', []).controller('ContentListControll
   $scope.content = new Content();  
   // FIXME : Constructeur de Content ?
   $scope.content.content = new Map();
-  $scope.content.content["field1"] = "value1";
-  $scope.content.content["field2"] = "value2";
-  $scope.content.content["field3"] = "value3";
-  
+  $scope.content.content["titre"] = "value1";
+  $scope.content.content["description"] = "value2";
+  $scope.content.content["imageUrl"] = "img/";
   $scope.addContent = function() { //Issues a POST to /api/content
     $scope.content.$save(function() {
       $state.go('contents'); // on success go back to home 
@@ -23,8 +23,6 @@ angular.module('dynamicFormApp.controllers', []).controller('ContentListControll
   };
   
   $scope.addNewField = function() {
-	  //alert($scope.content.content.size);
-	  //var newItemNo = $scope.choices.length+1;
    };
 }).controller('ContentEditController', function($scope, $state, $stateParams, Content) {
   $scope.updateContent = function() { //Issues a PUT to /api/content/:id
