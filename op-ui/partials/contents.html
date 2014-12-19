@@ -1,0 +1,16 @@
+<a ui-sref="newContent" class="btn-primary btn-lg nodecoration">Add New Content</a>
+ 
+<table class="table movietable">
+  <tr>
+    <td><h3>All contents</h3></td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="content in contents">
+    <td>{{content.id}}</td>
+    <td>
+      <a class="btn btn-primary" ui-sref="viewContent({id:content.id})">View</a>
+      <a class="btn btn-danger"  ng-click="deleteContent(content)">Delete</a>
+      <a class="btn btn-primary" ui-sref="editContent({id:content.id})">Edit</a>
+    </td>
+  </tr>
+</table>
