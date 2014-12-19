@@ -21,3 +21,4 @@ angular.module('dynamicFormApp').config(function($stateProvider) {
 }).run(function($state) {
   $state.go('contents'); //make a transition to movies state when app starts
 });
+

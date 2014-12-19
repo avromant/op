@@ -4,15 +4,23 @@ angular.module('dynamicFormApp.services', []).factory('Content', function($resou
     	method: 'PUT'
     }
   })
- })
-  .service('ContentFormService', function() {
-  deleteField = function(field) {
-	  delete $scope.content.content[field];
-   };
-  addNewField = function() {
-	  var size = Object.keys($scope.content.content).length + 1;
-	  $scope.content.content["_newField" + size] = "value" + size;
-   };
-
-    });
-
+ }).factory('ContentFormService', function(Content) {
+    var contentFormService = {
+          deleteField : function(content, field) {
+        	  delete content.content[field];
+           },
+          addNewField : function(content) {
+        	  var size = Object.keys(content.content).length + 1;
+        	  content.content["_newField" + size] = "value" + size;
+           },
+           initContent : function() {
+             var content = new Content();
+             content.content = new Map();
+             content.content["titre"] = "value1";
+             content.content["description"] = "value2";
+             content.content["imageUrl"] = "img/";
+             return content;
+           }
+    };
+    return contentFormService;
+ });
