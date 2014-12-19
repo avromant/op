@@ -3,5 +3,16 @@ angular.module('dynamicFormApp.services', []).factory('Content', function($resou
     update: { 
     	method: 'PUT'
     }
-  });
-});
+  })
+ })
+  .service('ContentFormService', function() {
+  deleteField = function(field) {
+	  delete $scope.content.content[field];
+   };
+  addNewField = function() {
+	  var size = Object.keys($scope.content.content).length + 1;
+	  $scope.content.content["_newField" + size] = "value" + size;
+   };
+
+    });
+

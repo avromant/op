@@ -9,7 +9,7 @@ angular.module('dynamicFormApp.controllers', []).controller('ContentListControll
   };
 }).controller('ContentViewController', function($scope, $stateParams, Content) {
   $scope.content = Content.get({ id: $stateParams.id }); //Issues a GET to /api/content/:id
-}).controller('ContentCreateController', function($scope, $state, $stateParams, Content) {
+}).controller('ContentCreateController', function($scope, $state, $stateParams, Content, ContentFormService) {
   $scope.content = new Content();  
   // FIXME : Constructeur de Content ?
   $scope.content.content = new Map();
@@ -21,15 +21,8 @@ angular.module('dynamicFormApp.controllers', []).controller('ContentListControll
       $state.go('contents'); // on success go back to home 
     });
   };
-  
-  $scope.deleteField = function(field) {
-	  delete $scope.content.content[field];
-   };
-  $scope.addNewField = function() {
-	  var size = Object.keys($scope.content.content).length + 1;
-	  $scope.content.content["_newField" + size] = "value" + size;
-   };
-}).controller('ContentEditController', function($scope, $state, $stateParams, Content) {
+
+}).controller('ContentEditController', function($scope, $state, $stateParams, Content, ContentFormService) {
   $scope.updateContent = function() { //Issues a PUT to /api/content/:id
 	$scope.content.$update(function() {
       $state.go('contents'); // on success go back to home 
