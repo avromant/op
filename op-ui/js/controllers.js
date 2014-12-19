@@ -22,7 +22,12 @@ angular.module('dynamicFormApp.controllers', []).controller('ContentListControll
     });
   };
   
+  $scope.deleteField = function(field) {
+	  delete $scope.content.content[field];
+   };
   $scope.addNewField = function() {
+	  var size = Object.keys($scope.content.content).length + 1;
+	  $scope.content.content["_newField" + size] = "value" + size;
    };
 }).controller('ContentEditController', function($scope, $state, $stateParams, Content) {
   $scope.updateContent = function() { //Issues a PUT to /api/content/:id
