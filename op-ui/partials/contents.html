@@ -5,7 +5,7 @@
     <td><h3>All contents</h3></td>
     <td></td>
   </tr>
-  <tr ng-repeat="content in contents">
+  <tr ng-repeat="content in contents" ng-show="content.id">
     <td>{{content.id}}</td>
     <td>
       <a class="btn btn-primary" ui-sref="viewContent({id:content.id})">View</a>
