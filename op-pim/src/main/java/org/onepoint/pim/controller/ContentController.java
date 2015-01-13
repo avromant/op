@@ -1,6 +1,7 @@
 package org.onepoint.pim.controller;
 
 import org.onepoint.pim.model.GenericContent;
+
 import org.onepoint.pim.repository.GenericContentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class ContentController {
 	GenericContentRepository repository;
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ResponseBody
+	 @ResponseBody
 	GenericContent getContentById(@PathVariable String id) {
 		return repository.findOne(id);
 	}

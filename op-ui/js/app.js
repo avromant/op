@@ -17,7 +17,11 @@ angular.module('dynamicFormApp').config(function($stateProvider) {
     url: '/contents/:id/edit',
     templateUrl: 'partials/content-edit.html',
     controller: 'ContentEditController'
-  });
+  }).state('params', {
+       url: '/params',
+       templateUrl: 'partials/param/params.html',
+       controller: 'ParamController'
+     });
 }).run(function($state) {
   $state.go('contents'); //make a transition to movies state when app starts
 });

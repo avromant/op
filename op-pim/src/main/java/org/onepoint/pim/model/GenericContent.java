@@ -7,19 +7,11 @@ import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
 
 @Document
-public class GenericContent {
-	
-	@Id
-	private String id;
+public class GenericContent extends GenericDocument {
+
 	@Field
 	private Map<String, Object> content;
-	
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public Map<String, Object> getContent() {
 		return content;
 	}

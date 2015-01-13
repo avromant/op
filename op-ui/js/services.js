@@ -1,6 +1,6 @@
 angular.module('dynamicFormApp.services', []).factory('Content', function($resource) {
   return $resource('http://localhost:8080/api/contents/:id', { id: '@_id' }, {
-    update: { 
+    update: {
     	method: 'PUT'
     }
   })
@@ -23,4 +23,20 @@ angular.module('dynamicFormApp.services', []).factory('Content', function($resou
            }
     };
     return contentFormService;
- });
+ }).factory('Param', function($resource) {
+     return $resource('http://localhost:8080/api/params/:id', { id: '@_id' }, {
+       update: {
+       	method: 'PUT'
+       }
+     })
+ }).factory('ParamFormService', function(Param) {
+      var paramFormService = {
+            deleteParam : function(param) {
+          	  //delete content.content[field];
+             },
+            addNewParam : function(param) {
+          	  //content.content["_newField" + size] = "value" + size;
+             }
+      };
+      return paramFormService;
+   });
